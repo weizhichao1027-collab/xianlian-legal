@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>弦练支持</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #14211c;
+      --muted: #57645f;
+      --surface: #f7f9f6;
+      --panel: #eef3ed;
+      --accent: #b7742f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--surface);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.68;
+    }
+    main {
+      width: min(760px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 56px 0 72px;
+    }
+    header {
+      padding: 28px 0 24px;
+      border-bottom: 1px solid #d8e0d8;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(32px, 7vw, 52px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    p { margin: 0 0 18px; color: var(--muted); }
+    nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    a {
+      color: var(--ink);
+      text-decoration-color: var(--accent);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+    nav a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 16px;
+      border: 1px solid #cfdbd0;
+      border-radius: 8px;
+      background: var(--panel);
+      text-decoration: none;
+    }
+    section { padding-top: 28px; }
+    h2 { margin: 0 0 12px; font-size: 22px; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>弦练</h1>
+      <p>民谣吉他短课、曲谱和本地麦克风练习反馈。</p>
+      <nav>
+        <a href="./privacy.html">查看隐私政策</a>
+        <a href="./support.html">查看支持页面</a>
+      </nav>
+    </header>
+    <section>
+      <h2>关于这个 App</h2>
+      <p>弦练面向零基础和入门吉他学习者，当前版本不需要注册账号，不包含广告，也不会上传录音。</p>
+      <p>麦克风权限仅用于本机识别调音、单音和开放和弦练习结果。</p>
+    </section>
+  </main>
+</body>
+</html>
