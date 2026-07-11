@@ -3,60 +3,299 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>弦练支持</title>
+  <meta name="description" content="吉他自习室 App 的官方支持页面，提供开发者联系邮箱、响应时间、问题反馈说明和常见问题。">
+  <title>吉他自习室支持</title>
   <style>
+    :root {
+      color-scheme: light;
+      --ink: #14211c;
+      --body: #3f4f49;
+      --muted: #5b6964;
+      --surface: #f7f9f6;
+      --panel: #edf2ec;
+      --border: #cbd6cc;
+      --accent: #98591f;
+      --action: #20372e;
+      --action-text: #f7f9f6;
+    }
+
+    html { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: inherit; }
+
     body {
       margin: 0;
-      background: #f7f9f6;
-      color: #14211c;
+      background: var(--surface);
+      color: var(--ink);
       font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-      line-height: 1.72;
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
     }
+
     main {
       width: min(780px, calc(100% - 40px));
-      margin: 0 auto;
-      padding: 48px 0 72px;
+      margin-inline: auto;
+      padding-block: 24px 72px;
     }
-    h1 { margin: 0 0 8px; font-size: 38px; line-height: 1.15; letter-spacing: 0; }
-    h2 { margin: 30px 0 10px; font-size: 22px; }
-    h3 { margin: 22px 0 8px; font-size: 18px; }
-    p, li { color: #43524c; }
-    a { color: #14211c; text-decoration-color: #b7742f; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      margin-block-end: 32px;
+      padding-block-end: 16px;
+      border-block-end: 1px solid var(--border);
+    }
+
+    nav a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    header { max-width: 68ch; }
+
+    h1, h2, h3 {
+      color: var(--ink);
+      text-wrap: balance;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 7vw, 2.75rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 1.625rem;
+      line-height: 1.25;
+    }
+
+    h3 {
+      margin: 24px 0 8px;
+      font-size: 1.25rem;
+      line-height: 1.35;
+    }
+
+    p {
+      max-width: 72ch;
+      margin: 0 0 16px;
+      color: var(--body);
+      text-wrap: pretty;
+    }
+
+    header p {
+      margin-block-start: 12px;
+      font-size: 1.125rem;
+    }
+
+    a {
+      color: var(--ink);
+      text-decoration-color: var(--accent);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+
+    a:hover { text-decoration-thickness: 3px; }
+
+    a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .contact-section { margin-block-start: 32px; }
+
+    .support-panel {
+      padding: 24px 32px 32px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--panel);
+    }
+
+    .support-label {
+      margin-block-end: 4px;
+      color: var(--muted);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .email-address {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      margin-block-end: 8px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .support-action {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-block: 4px 16px;
+      padding-inline: 20px;
+      border-radius: 8px;
+      background: var(--action);
+      color: var(--action-text);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .support-action:hover { background: #172b23; }
+
+    .support-action:focus-visible {
+      outline-color: var(--accent);
+      outline-offset: 4px;
+    }
+
+    .response-time {
+      margin-block-end: 0;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .content-section {
+      margin-block-start: 48px;
+      padding-block-start: 40px;
+      border-block-start: 1px solid var(--border);
+    }
+
+    ol, ul {
+      max-width: 70ch;
+      margin: 0;
+      padding-inline-start: 1.5em;
+      color: var(--body);
+    }
+
+    li + li { margin-block-start: 8px; }
+
+    .privacy-note {
+      margin-block-start: 20px;
+      padding: 16px;
+      border-radius: 8px;
+      background: #e6eee8;
+      color: #263b32;
+    }
+
+    .related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .related-links a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    footer {
+      margin-block-start: 56px;
+      padding-block-start: 24px;
+      border-block-start: 1px solid var(--border);
+    }
+
+    footer p {
+      margin-block-end: 4px;
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 520px) {
+      main {
+        width: calc(100% - 32px);
+        padding-block-end: 48px;
+      }
+
+      nav { margin-block-end: 24px; }
+
+      .support-panel { padding: 20px 20px 24px; }
+
+      .support-action { width: 100%; }
+
+      .content-section {
+        margin-block-start: 40px;
+        padding-block-start: 32px;
+      }
+    }
   </style>
 </head>
 <body>
   <main>
-    <h1>弦练支持</h1>
-    <p>这里提供弦练 App 的常见问题和反馈说明。</p>
+    <nav aria-label="主要导航">
+      <a href="./index.html">吉他自习室首页</a>
+      <a href="./privacy.html">隐私政策</a>
+    </nav>
 
-    <h2>常见问题</h2>
-    <h3>App 需要登录吗？</h3>
-    <p>不需要。当前版本可以直接查看课程、曲谱、和弦和练习内容。</p>
+    <header>
+      <h1>吉他自习室支持</h1>
+      <p>遇到使用问题、功能异常，或想提出建议？请通过下方邮箱联系开发者，我们会人工查看并回复。</p>
+    </header>
 
-    <h3>为什么需要麦克风权限？</h3>
-    <p>麦克风用于识别吉他的调音、单音和开放和弦。音频只在设备本地实时分析，不保存也不上传。</p>
+    <section class="contact-section" aria-labelledby="contact-title">
+      <h2 id="contact-title">联系支持</h2>
+      <div class="support-panel">
+        <p class="support-label">开发者支持邮箱</p>
+        <a class="email-address" href="mailto:281916057@qq.com?subject=%E5%90%89%E4%BB%96%E8%87%AA%E4%B9%A0%E5%AE%A4%E6%94%AF%E6%8C%81%E8%AF%B7%E6%B1%82">281916057@qq.com</a>
+        <p>你可以通过邮件咨询 App 使用方法、报告问题、提出功能建议，或请求隐私相关帮助。</p>
+        <a class="support-action" href="mailto:281916057@qq.com?subject=%E5%90%89%E4%BB%96%E8%87%AA%E4%B9%A0%E5%AE%A4%E6%94%AF%E6%8C%81%E8%AF%B7%E6%B1%82">发送支持邮件</a>
+        <p class="response-time">通常会在 2 个工作日内回复。节假日期间可能稍有延迟。</p>
+      </div>
+    </section>
 
-    <h3>麦克风检测不准怎么办？</h3>
-    <p>请把手机放在琴箱前方 20-30 厘米，关闭外放伴奏和说话声，一次只弹当前目标。使用节拍器或伴奏时建议戴耳机，避免声音进入麦克风。</p>
+    <section class="content-section" aria-labelledby="details-title">
+      <h2 id="details-title">发送邮件时请提供</h2>
+      <ol>
+        <li>设备型号，例如 iPhone 16 或 iPad Air 11 英寸。</li>
+        <li>iOS 或 iPadOS 版本，以及吉他自习室 App 版本。</li>
+        <li>出现问题的页面、操作步骤，以及你预期和实际看到的结果。</li>
+        <li>如与练习检测有关，请说明麦克风权限、周围环境和设备离吉他的距离。</li>
+        <li>如方便，可附上不包含个人敏感信息的截图。</li>
+      </ol>
+      <p class="privacy-note">请不要在邮件中发送密码、身份证件、支付信息或其他不必要的敏感信息。吉他自习室当前不会上传或保存你的麦克风录音。</p>
+    </section>
 
-    <h3>拒绝麦克风权限后还能使用吗？</h3>
-    <p>可以查看课程、曲谱和和弦内容，但调音和练习检测无法听到你的琴声。可以在 iOS 设置中重新开启麦克风权限。</p>
+    <section class="content-section" aria-labelledby="faq-title">
+      <h2 id="faq-title">常见问题</h2>
 
-    <h3>曲库是否包含商业歌曲？</h3>
-    <p>当前版本使用原创教学曲、公版旋律和传统片段，不提供未授权商业歌曲歌词或音频。</p>
+      <h3>App 需要登录吗？</h3>
+      <p>不需要。当前版本可以直接查看课程、曲谱、和弦和练习内容。</p>
 
-    <h2>反馈建议</h2>
-    <p>请通过 App Store 评价、开发者联系入口，或本页面后续公布的支持表单反馈问题。建议反馈时提供：</p>
-    <ul>
-      <li>iPhone 或 iPad 型号</li>
-      <li>iOS 版本</li>
-      <li>App 版本号</li>
-      <li>出现问题的页面</li>
-      <li>是否开启麦克风权限</li>
-      <li>房间环境和手机离琴距离</li>
-    </ul>
+      <h3>为什么需要麦克风权限？</h3>
+      <p>麦克风用于识别吉他的调音、单音和开放和弦。音频只在设备本地实时分析，不会保存或上传。</p>
 
-    <p><a href="./privacy.html">查看隐私政策</a></p>
+      <h3>麦克风检测不准怎么办？</h3>
+      <p>请把设备放在琴箱前方约 20 至 30 厘米处，关闭外放伴奏和说话声，并一次只弹当前目标。使用节拍器或伴奏时建议戴耳机，避免声音再次进入麦克风。</p>
+
+      <h3>拒绝麦克风权限后还能使用吗？</h3>
+      <p>仍然可以查看课程、曲谱和和弦内容，但调音和练习检测无法听到你的琴声。你可以在系统“设置”中找到“吉他自习室”，重新开启麦克风权限。</p>
+
+      <h3>曲库是否包含商业歌曲？</h3>
+      <p>当前版本使用原创教学曲、公版旋律和传统片段，不提供未授权商业歌曲的歌词或音频。</p>
+    </section>
+
+    <section class="content-section" aria-labelledby="links-title">
+      <h2 id="links-title">相关链接</h2>
+      <ul class="related-links">
+        <li><a href="./privacy.html">查看隐私政策</a></li>
+        <li><a href="./index.html">返回吉他自习室首页</a></li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>吉他自习室开发者支持</p>
+      <p>页面更新日期：2026-07-11</p>
+    </footer>
   </main>
 </body>
 </html>
