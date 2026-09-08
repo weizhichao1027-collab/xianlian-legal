@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://weizhichao1027-collab.github.io/xianlian-legal/sitemap.xml
