@@ -2,82 +2,192 @@
 <html lang="zh-Hans">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>吉他自习室支持</title>
-  <style>
-    :root {
-      color-scheme: light;
-      --ink: #14211c;
-      --muted: #57645f;
-      --surface: #f7f9f6;
-      --panel: #eef3ed;
-      --accent: #b7742f;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--surface);
-      color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-      line-height: 1.68;
-    }
-    main {
-      width: min(760px, calc(100% - 40px));
-      margin: 0 auto;
-      padding: 56px 0 72px;
-    }
-    header {
-      padding: 28px 0 24px;
-      border-bottom: 1px solid #d8e0d8;
-    }
-    h1 {
-      margin: 0 0 8px;
-      font-size: clamp(32px, 7vw, 52px);
-      line-height: 1.08;
-      letter-spacing: 0;
-    }
-    p { margin: 0 0 18px; color: var(--muted); }
-    nav {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 24px;
-    }
-    a {
-      color: var(--ink);
-      text-decoration-color: var(--accent);
-      text-decoration-thickness: 2px;
-      text-underline-offset: 4px;
-    }
-    nav a {
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      padding: 0 16px;
-      border: 1px solid #cfdbd0;
-      border-radius: 8px;
-      background: var(--panel);
-      text-decoration: none;
-    }
-    section { padding-top: 28px; }
-    h2 { margin: 0 0 12px; font-size: 22px; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="吉他自习室是一款为零基础学习者设计的民谣吉他练习 App。每天 10-15 分钟，沿 90 天路径完成短课、调音、和弦与歌曲练习。">
+  <meta name="theme-color" content="#f8f5f0">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="吉他自习室｜每天弹一点，90 天走完入门路径">
+  <meta property="og:description" content="短课、曲谱和本机麦克风反馈，把每天该练什么讲清楚。">
+  <meta property="og:url" content="https://weizhichao1027-collab.github.io/xianlian-legal/">
+  <meta property="og:image" content="https://weizhichao1027-collab.github.io/xianlian-legal/assets/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="吉他自习室 App 的 90 天吉他入门路径与今日练习页面">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="吉他自习室｜每天弹一点，90 天走完入门路径">
+  <meta name="twitter:description" content="短课、曲谱和本机麦克风反馈，把每天该练什么讲清楚。">
+  <meta name="twitter:image" content="https://weizhichao1027-collab.github.io/xianlian-legal/assets/og-cover.png">
+  <title>吉他自习室｜每天 10 分钟，走完 90 天吉他入门路径</title>
+  <link rel="canonical" href="https://weizhichao1027-collab.github.io/xianlian-legal/">
+  <link rel="icon" href="./assets/app-icon.png" type="image/png">
+  <link rel="stylesheet" href="./marketing.css">
 </head>
 <body>
-  <main>
-    <header>
-      <h1>吉他自习室</h1>
-      <p>民谣吉他短课、曲谱和本地麦克风练习反馈。</p>
-      <nav>
-        <a href="./privacy.html">查看隐私政策</a>
-        <a href="./support.html">查看支持页面</a>
-      </nav>
-    </header>
-    <section>
-      <h2>关于这个 App</h2>
-      <p>吉他自习室面向零基础和入门吉他学习者，当前版本不需要注册账号，不包含广告，也不会上传练习数据或录音。</p>
-      <p>麦克风用于本机识别调音、单音和开放和弦，也可由你主动开启并在本机保存演奏留档。</p>
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="主要导航">
+      <a class="brand" href="#top" aria-label="返回吉他自习室首页">
+        <img src="./assets/app-icon.png" width="44" height="44" alt="">
+        <span>吉他自习室</span>
+      </a>
+      <div class="nav-links">
+        <a href="#daily">每天怎么练</a>
+        <a href="#path">课程内容</a>
+        <a href="#privacy">隐私说明</a>
+      </div>
+      <a class="nav-action" href="mailto:281916057@qq.com?subject=%E8%8E%B7%E5%8F%96%E5%90%89%E4%BB%96%E8%87%AA%E4%B9%A0%E5%AE%A4%E4%B8%8A%E6%9E%B6%E9%80%9A%E7%9F%A5&amp;body=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E8%8E%B7%E5%8F%96%E5%90%89%E4%BB%96%E8%87%AA%E4%B9%A0%E5%AE%A4%20App%20Store%20%E4%B8%8A%E6%9E%B6%E9%80%9A%E7%9F%A5%E3%80%82">邮件获取上架通知</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="string-lines" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <p class="eyebrow">给零基础的民谣吉他练习 App</p>
+          <h1 id="hero-title">从第一根弦，到第一首完整的歌。</h1>
+          <p class="hero-lede">每天留出 10-15 分钟。吉他自习室会把今天该练什么、怎么判断进步、卡住时先修哪里，整理成一条能跟下去的 90 天路径。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="mailto:281916057@qq.com?subject=%E8%8E%B7%E5%8F%96%E5%90%89%E4%BB%96%E8%87%AA%E4%B9%A0%E5%AE%A4%E4%B8%8A%E6%9E%B6%E9%80%9A%E7%9F%A5&amp;body=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E8%8E%B7%E5%8F%96%E5%90%89%E4%BB%96%E8%87%AA%E4%B9%A0%E5%AE%A4%20App%20Store%20%E4%B8%8A%E6%9E%B6%E9%80%9A%E7%9F%A5%E3%80%82">邮件获取上架通知</a>
+            <a class="text-link" href="#daily">了解每天怎么练</a>
+          </div>
+          <p class="availability">iPhone 与 iPad 适用。首个版本免费，无订阅与内购。App Store 上架准备中。</p>
+        </div>
+
+        <div class="hero-visual" aria-label="吉他自习室今日练习页面预览">
+          <div class="phone-frame phone-frame-hero">
+            <img src="./assets/today.webp" width="660" height="1434" alt="吉他自习室今日练习页面，显示逐弦调音任务和三段练习计划">
+          </div>
+          <div class="practice-note" aria-hidden="true">
+            <span>今日约</span>
+            <strong>10</strong>
+            <span>分钟</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof" aria-label="产品内容概览">
+      <div class="proof-shell">
+        <div class="proof-item"><strong>90 天</strong><span>渐进学习路径</span></div>
+        <div class="proof-item"><strong>80 节</strong><span>可执行短课</span></div>
+        <div class="proof-item"><strong>免费</strong><span>无订阅与内购</span></div>
+        <div class="proof-item"><strong>全程本机</strong><span>练习检测不上传</span></div>
+      </div>
+    </section>
+
+    <section class="daily section-shell" id="daily" aria-labelledby="daily-title">
+      <div class="daily-copy">
+        <h2 id="daily-title">每天知道练什么，也知道下一步。</h2>
+        <p class="section-intro">不是把课程和曲谱堆在一起。每天的练习会结合当前进度、最近弱项和正在学的歌曲，安排成可以立刻动手的短任务。</p>
+
+        <dl class="practice-rhythm">
+          <div>
+            <dt>先听准</dt>
+            <dd>从调音、单音或开放和弦开始，让耳朵和手指先进入状态。</dd>
+          </div>
+          <div>
+            <dt>再练短</dt>
+            <dd>一节只解决一个动作。明确目标、预计时长和完成标准。</dd>
+          </div>
+          <div>
+            <dt>最后接起来</dt>
+            <dd>把和弦、节奏与歌曲片段串起来，留下真实的练习证据。</dd>
+          </div>
+          <div>
+            <dt>卡住就先修一件事</dt>
+            <dd>闷音、抢拍、换手慢或听不清，都给出具体的下一步，而不是只显示一个分数。</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="daily-visual">
+        <div class="phone-frame phone-frame-secondary">
+          <img src="./assets/feedback.webp" width="660" height="1434" loading="lazy" alt="吉他自习室本机练习反馈页面，显示单弦练习结果、通过标准和下一步建议">
+        </div>
+        <p class="image-caption">听见结果，也看得懂下一步。</p>
+      </div>
+    </section>
+
+    <section class="path" id="path" aria-labelledby="path-title">
+      <div class="section-shell path-heading">
+        <h2 id="path-title">一条会向前走的学习路径。</h2>
+        <p>80 节短课和 72 首原创与公版练习曲，从开箱、持琴、调音开始，逐步进入开放和弦、扫弦、段落练习、指弹基础与完整弹唱。每张截图都来自当前 App。</p>
+      </div>
+
+      <p class="visually-hidden" id="screen-rail-help">使用左右方向键或水平滚动查看更多页面。</p>
+      <div class="screen-rail" tabindex="0" aria-label="吉他自习室功能页面预览" aria-describedby="screen-rail-help">
+        <figure class="screen-shot screen-shot-wide">
+          <div class="phone-frame">
+            <img src="./assets/course.webp" width="660" height="1434" loading="lazy" alt="90 天课程地图，展示当前阶段、下一节课和分阶段短课路径">
+          </div>
+          <figcaption><strong>循序解锁</strong><span>先掌握前置动作，再进入下一课。</span></figcaption>
+        </figure>
+        <figure class="screen-shot">
+          <div class="phone-frame">
+            <img src="./assets/sheet-reader.webp" width="660" height="1434" loading="lazy" alt="歌曲练习谱页面，展示难度选择、和弦提示和分段小节">
+          </div>
+          <figcaption><strong>把歌拆小</strong><span>简化、标准和挑战三种版本，按段练习。</span></figcaption>
+        </figure>
+        <figure class="screen-shot">
+          <div class="phone-frame">
+            <img src="./assets/growth.webp" width="660" height="1434" loading="lazy" alt="成长页面，展示练习记录、复习建议和真实能力证据">
+          </div>
+          <figcaption><strong>看见积累</strong><span>记录练习、弱项与下一步建议。</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="privacy" id="privacy" aria-labelledby="privacy-title">
+      <div class="section-shell privacy-layout">
+        <div>
+          <p class="section-kicker section-kicker-dark">隐私与反馈</p>
+          <h2 id="privacy-title">你的练习，留在你的设备里。</h2>
+          <p>麦克风只用于本机识别调音、单音和开放和弦。检测音频不保存、不上传；只有你主动创建的演奏留档会保存在本机，并且可以随时删除。</p>
+          <a class="button button-light" href="./privacy.html">阅读完整隐私政策</a>
+        </div>
+
+        <ul class="privacy-list">
+          <li><strong>不需要账号</strong><span>打开就能查看课程、曲谱和练习内容。</span></li>
+          <li><strong>不包含广告</strong><span>当前版本没有第三方广告与追踪。</span></li>
+          <li><strong>不上传练习数据</strong><span>学习进度、偏好和录音都保存在本机。</span></li>
+          <li><strong>听不清就不评分</strong><span>没有可靠证据时，不用虚假结果催你完成。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="closing section-shell" aria-labelledby="closing-title">
+      <img class="closing-icon" src="./assets/app-icon.webp" width="256" height="256" alt="吉他自习室 App 图标，吉他拨片中间有六根琴弦">
+      <div class="closing-copy">
+        <h2 id="closing-title">每天弹一点，就从今天开始。</h2>
+        <p>吉他自习室正在完成 App Store 上架准备。你可以通过邮件获取上线通知，或先查看支持页面了解设备与功能说明。</p>
+        <div class="closing-actions">
+          <a class="button button-primary" href="mailto:281916057@qq.com?subject=%E8%8E%B7%E5%8F%96%E5%90%89%E4%BB%96%E8%87%AA%E4%B9%A0%E5%AE%A4%E4%B8%8A%E6%9E%B6%E9%80%9A%E7%9F%A5&amp;body=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E8%8E%B7%E5%8F%96%E5%90%89%E4%BB%96%E8%87%AA%E4%B9%A0%E5%AE%A4%20App%20Store%20%E4%B8%8A%E6%9E%B6%E9%80%9A%E7%9F%A5%E3%80%82">邮件获取上架通知</a>
+          <a class="text-link" href="./support.html">查看支持信息</a>
+        </div>
+      </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <a class="brand footer-brand" href="#top">
+        <img src="./assets/app-icon.png" width="40" height="40" loading="lazy" alt="">
+        <span>吉他自习室</span>
+      </a>
+      <p>给零基础学习者的一间日光练琴室。</p>
+      <nav aria-label="页脚导航">
+        <a href="./privacy.html">隐私政策</a>
+        <a href="./support.html">支持</a>
+        <a href="mailto:281916057@qq.com?subject=%E5%90%89%E4%BB%96%E8%87%AA%E4%B9%A0%E5%AE%A4%E5%92%A8%E8%AF%A2">联系开发者</a>
+      </nav>
+      <small>© 2026 吉他自习室</small>
+    </div>
+  </footer>
 </body>
 </html>

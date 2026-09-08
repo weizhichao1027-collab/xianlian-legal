@@ -1,0 +1,155 @@
+:root {
+  --canvas: #f8f5f0;
+  --sheet: #fffdfa;
+  --ink: #302b29;
+  --graphite: #59504b;
+  --accent: #b4412c;
+  --peach: #f4dccb;
+  --stage: #3d302d;
+  --stage-glow: #ffc3a5;
+  --line: #e3dacf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 1200px;
+  height: 630px;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1.24fr 0.76fr;
+  gap: 48px;
+  padding: 56px 72px;
+}
+
+.copy {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.brand img {
+  border-radius: 22%;
+}
+
+.eyebrow {
+  margin: 54px 0 14px;
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+h1 {
+  max-width: 720px;
+  margin: 0;
+  font-size: 67px;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.detail {
+  max-width: 650px;
+  margin: 22px 0 0;
+  color: var(--graphite);
+  font-size: 22px;
+  line-height: 1.55;
+}
+
+.meta {
+  margin: 22px 0 0;
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.visual {
+  position: relative;
+  min-width: 0;
+}
+
+.strings {
+  position: absolute;
+  top: 94px;
+  right: -72px;
+  left: -96px;
+  display: grid;
+  gap: 10px;
+  transform: rotate(-5deg);
+}
+
+.strings span {
+  height: 2px;
+  background: var(--line);
+}
+
+.phone {
+  position: absolute;
+  top: 16px;
+  right: 6px;
+  width: 294px;
+  overflow: hidden;
+  border: 6px solid var(--sheet);
+  border-radius: 42px;
+  background: var(--sheet);
+  box-shadow: 0 22px 56px rgba(70, 46, 36, 0.16);
+  transform: rotate(3deg);
+}
+
+.phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.practice-note {
+  position: absolute;
+  top: 132px;
+  left: -6px;
+  width: 112px;
+  height: 112px;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  border-radius: 50%;
+  background: var(--stage);
+  color: var(--stage-glow);
+  box-shadow: 0 12px 24px rgba(70, 46, 36, 0.18);
+  line-height: 1;
+  transform: rotate(-7deg);
+}
+
+.practice-note small {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.practice-note strong {
+  font-size: 43px;
+}
