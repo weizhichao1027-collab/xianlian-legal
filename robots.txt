@@ -4,13 +4,23 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
+User-agent: Applebot
+Allow: /
+
 User-agent: *
 Allow: /
 
+# 产品事实摘要：https://weizhichao1027-collab.github.io/xianlian-legal/llms.txt
 Sitemap: https://weizhichao1027-collab.github.io/xianlian-legal/sitemap.xml
