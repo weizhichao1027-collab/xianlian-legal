@@ -73,7 +73,10 @@
           }
         },
         {
-          "@type": ["SoftwareApplication", "MobileApplication"],
+          "@type": [
+            "SoftwareApplication",
+            "MobileApplication"
+          ],
           "@id": "https://weizhichao1027-collab.github.io/xianlian-legal/#app",
           "name": "吉他自习室：零基础学吉他",
           "alternateName": "吉他自习室 App",
@@ -84,7 +87,10 @@
           "sameAs": "https://apps.apple.com/cn/app/id6788635183",
           "applicationCategory": "EducationalApplication",
           "operatingSystem": "iOS 17.0 or later; iPadOS 17.0 or later",
-          "availableOnDevice": ["iPhone", "iPad"],
+          "availableOnDevice": [
+            "iPhone",
+            "iPad"
+          ],
           "softwareRequirements": "需要 iOS 17.0 或 iPadOS 17.0 或更高版本",
           "permissions": "麦克风权限可选，仅用于本机调音、单音、开放和弦检测，以及用户主动开始的本机演奏留档",
           "softwareVersion": "1.2",
@@ -94,7 +100,21 @@
             "@type": "Audience",
             "audienceType": "零基础民谣吉他学习者"
           },
-          "inLanguage": ["zh-Hans", "en", "es", "fr", "de", "ja", "ko", "pt-BR", "ru", "ar", "hi", "id", "it"],
+          "inLanguage": [
+            "zh-Hans",
+            "en",
+            "es",
+            "fr",
+            "de",
+            "ja",
+            "ko",
+            "pt-BR",
+            "ru",
+            "ar",
+            "hi",
+            "id",
+            "it"
+          ],
           "author": {
             "@id": "https://weizhichao1027-collab.github.io/xianlian-legal/#developer"
           },
@@ -123,7 +143,7 @@
             "https://weizhichao1027-collab.github.io/xianlian-legal/assets/growth.webp"
           ],
           "datePublished": "2026-07-23",
-          "dateModified": "2026-09-23",
+          "dateModified": "2026-10-02",
           "offers": {
             "@type": "Offer",
             "url": "https://apps.apple.com/cn/app/id6788635183",
@@ -160,7 +180,7 @@
           "primaryImageOfPage": {
             "@id": "https://weizhichao1027-collab.github.io/xianlian-legal/#primaryimage"
           },
-          "dateModified": "2026-09-23",
+          "dateModified": "2026-10-02",
           "relatedLink": [
             "https://weizhichao1027-collab.github.io/xianlian-legal/about.html",
             "https://weizhichao1027-collab.github.io/xianlian-legal/support.html",
@@ -223,7 +243,7 @@
               "name": "练习音频会上传吗？",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "检测音频不保存、不上传。只有你主动创建的演奏留档会保存在本机，并可逐条删除。版本 1.2 另通过友盟统计 SDK 上报匿名功能事件，不包含录音或音频内容。"
+                "text": "检测音频不保存、不上传。主动演奏留档保存在本机，App 不会自动上传。1.2 已集成友盟统计；SDK 还处理设备标识与设备／网络信息。待发布的 1.3 默认关闭统计，主动同意后才初始化，可随时关闭；1.3 可由你主动导出演奏。"
               }
             },
             {
@@ -360,7 +380,7 @@
     <section class="path" id="path" aria-labelledby="path-title">
       <div class="section-shell path-heading">
         <h2 id="path-title">一条会向前走的学习路径。</h2>
-        <p>80 节短课和 72 首原创与公版练习曲，从开箱、持琴、调音开始，逐步进入开放和弦、扫弦、段落练习、指弹基础与完整弹唱。下面的截图来自当前简体中文界面。成长页上的天数和次数是演示数据，不是公开用户统计。</p>
+        <p>80 节短课和 72 首原创与公版练习曲，从开箱、持琴、调音开始，逐步进入开放和弦、扫弦、段落练习、指弹基础与完整弹唱。下面的截图为公开 1.2 的简体中文演示界面，不代表 1.3 已发布。成长页上的天数和次数是演示数据，不是公开用户统计。</p>
       </div>
 
       <p class="visually-hidden" id="screen-rail-help">使用左右方向键或水平滚动查看更多页面。</p>
@@ -379,9 +399,9 @@
         </figure>
         <figure class="screen-shot">
           <div class="phone-frame">
-            <img src="./assets/sheet-reader.webp" width="660" height="1434" loading="lazy" decoding="async" alt="曲谱页面，展示原创练习曲的简化、标准和进阶三种版本，以及静态分段谱">
+            <img src="./assets/sheet-reader.webp" width="660" height="1434" loading="lazy" decoding="async" alt="1.2 曲谱页面，展示版本选择与静态分段谱">
           </div>
-          <figcaption><strong>把歌拆小</strong><span>简化、标准和进阶三种版本。当前是静态分段谱。</span></figcaption>
+          <figcaption><strong>把歌拆小</strong><span>静态分段谱，配合和弦速查练习。1.3 只展示已有伴奏版本。</span></figcaption>
         </figure>
         <figure class="screen-shot">
           <div class="phone-frame">
@@ -446,12 +466,21 @@
       </div>
     </section>
 
+    <section class="release" id="upcoming-1-3" aria-labelledby="upcoming-title">
+      <div class="section-shell">
+        <p class="section-kicker">待发布版本</p>
+        <h2 id="upcoming-title">1.3：从一根弦开始，继续上一次练习。</h2>
+        <p>1.3 / Build 8 尚未在 App Store 发布。下一版明确首次收音目标，提供两分钟练习退路、五首歌曲的分段书签、同条件作品比较、里程碑保留与主动导出，并为保存失败提供重试。使用统计默认关闭，主动同意后才初始化友盟 SDK。当前下载仍为 1.2。</p>
+        <p>真人教师素材、自动整曲评分和经数据证明的学习或留存效果不在本次说明中。<a href="./about.html#upcoming-1-3">核对 1.3 功能与适用范围</a> · <a href="./privacy.html">查看统计选择及数据处理</a></p>
+      </div>
+    </section>
+
     <section class="facts" id="facts" aria-labelledby="facts-title">
       <div class="section-shell">
         <div class="facts-heading">
           <p class="section-kicker">产品事实与能力边界</p>
           <h2 id="facts-title">关于吉他自习室，直接回答。</h2>
-          <p>以下答案以当前公开版本 1.2 为准，核对日期为 <time datetime="2026-09-23">2026 年 9 月 23 日</time>。完整版本、标识符与能力边界可在<a href="./about.html">官方产品事实页</a>核对。</p>
+          <p>以下说明区分在架 1.2 与待发布 1.3，页面核对日期为 <time datetime="2026-10-02">2026 年 10 月 2 日</time>。完整版本、标识符与能力边界可在<a href="./about.html">官方产品事实页</a>核对。</p>
         </div>
 
         <div class="answer-grid">
@@ -477,7 +506,7 @@
           </article>
           <article class="answer-card">
             <h3>练习音频会上传吗？</h3>
-            <p>检测音频不保存、不上传。只有你主动创建的演奏留档会保存在本机，并可逐条删除。版本 1.2 另通过友盟统计 SDK 上报匿名功能事件，不包含录音或音频内容。</p>
+            <p>检测音频不保存、不上传。主动演奏留档保存在本机，App 不会自动上传。1.2 已集成友盟统计；SDK 还处理设备标识与设备／网络信息。待发布的 1.3 默认关闭统计，主动同意后才初始化，可随时关闭；1.3 可由你主动导出演奏。</p>
           </article>
         </div>
       </div>
@@ -495,7 +524,7 @@
         <ul class="privacy-list">
           <li><strong>不需要账号</strong><span>打开就能查看课程、曲谱和练习内容。</span></li>
           <li><strong>不包含广告</strong><span>当前版本没有第三方广告与跨 App 追踪。</span></li>
-          <li><strong>录音与进度留在本机</strong><span>学习进度、偏好和演奏留档都不上传；只有匿名的功能使用事件用于改进产品。</span></li>
+          <li><strong>录音与进度留在本机</strong><span>App 不会自动上传学习档案或录音。使用统计含随机标识和设备／网络信息；1.3 默认关闭，由你选择开启。</span></li>
           <li><strong>听不清就不评分</strong><span>没有可靠证据时，不用虚假结果催你完成。</span></li>
         </ul>
       </div>
