@@ -336,6 +336,7 @@
   }
 
   .hero h1 {
+    font-size: clamp(2.5rem, 4.4vw, 4rem);
     display: grid;
     gap: var(--space-sm);
   }
@@ -928,7 +929,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(4.5rem, 6.5vw, 5.5rem);
+      font-size: clamp(3rem, 4.4vw, 4rem);
     }
 
     .hero .eyebrow {

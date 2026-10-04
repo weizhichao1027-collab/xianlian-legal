@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://weizhichao1027-collab.github.io/xianlian-legal/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-04</lastmod>
     <image:image>
       <image:loc>https://weizhichao1027-collab.github.io/xianlian-legal/assets/og-cover.png</image:loc>
     </image:image>
@@ -31,18 +31,14 @@
   </url>
   <url>
     <loc>https://weizhichao1027-collab.github.io/xianlian-legal/about.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-04</lastmod>
   </url>
   <url>
     <loc>https://weizhichao1027-collab.github.io/xianlian-legal/privacy.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-04</lastmod>
   </url>
   <url>
     <loc>https://weizhichao1027-collab.github.io/xianlian-legal/support.html</loc>
-    <lastmod>2026-10-03</lastmod>
-  </url>
-  <url>
-    <loc>https://weizhichao1027-collab.github.io/xianlian-legal/llms.txt</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-04</lastmod>
   </url>
 </urlset>

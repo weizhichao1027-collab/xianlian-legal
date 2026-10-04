@@ -1,3 +1,5 @@
+# Deployment note: this project-level file is informational.
+# Crawlers read https://weizhichao1027-collab.github.io/robots.txt at the host root.
 User-agent: OAI-SearchBot
 Allow: /
 
