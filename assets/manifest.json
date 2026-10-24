@@ -1,0 +1,62 @@
+{
+  "updated": "2026-10-24",
+  "version": "1.4",
+  "releaseBuild": "10",
+  "sourceNote": "Original Chinese UI captures dated 2026-10-21, reused in 2026-10-22 release artwork. Progress and audio include demo data and synthetic samples, not learning outcomes. growth.webp preserves its old URL but now shows recording comparison.",
+  "images": [
+    {
+      "file": "assets/today.webp",
+      "source": "AppStore/Screenshots/Editable/Multilingual-2026-10-22/captures/zh-Hans/iPhone/01-today.png",
+      "sourceSHA256": "71d5463e58fa41782bbfebdba6f78d500ffb2ec72ba924d5939cbc8a5c0c5aa0",
+      "sha256": "ab256ca42a15513ca719e5ddc6b1bb48d60c5e20081e342efe9ddde70d292ed1",
+      "width": 660,
+      "height": 1434,
+      "bytes": 44428
+    },
+    {
+      "file": "assets/course.webp",
+      "source": "AppStore/Screenshots/Editable/Multilingual-2026-10-22/captures/zh-Hans/iPhone/02-course.png",
+      "sourceSHA256": "4a792c9cac3d960b7cd8582e19bdae975f46bcd9b523bb105e1034f1045dca5d",
+      "sha256": "35760a7313fbcd5c146ea4c730f998165167de45585054c7cc030bb50cc925b1",
+      "width": 660,
+      "height": 1434,
+      "bytes": 42450
+    },
+    {
+      "file": "assets/feedback.webp",
+      "source": "AppStore/Screenshots/Editable/Multilingual-2026-10-22/captures/zh-Hans/iPhone/03-feedback.png",
+      "sourceSHA256": "83089cb4101bdb9bf29fab67d8c0818647f4f2c3b5a1ad264f214fc5729185f6",
+      "sha256": "b21ae91e1e92e3696839e21ea9ce1d785835c0cc0ea2befe534a9936f8d39f46",
+      "width": 660,
+      "height": 1434,
+      "bytes": 54086
+    },
+    {
+      "file": "assets/sheet-reader.webp",
+      "source": "AppStore/Screenshots/Editable/Multilingual-2026-10-22/captures/zh-Hans/iPhone/04-song-practice.png",
+      "sourceSHA256": "61d305bfc3356f3f20a2673c5e0758ae7297332762dd260258b3d1be4d3d6321",
+      "sha256": "6ba7d137f82c00447d18c1651ec923c151dca2e343c6943c8db67d42f56cc52a",
+      "width": 660,
+      "height": 1434,
+      "bytes": 30608
+    },
+    {
+      "file": "assets/growth.webp",
+      "source": "AppStore/Screenshots/Editable/Multilingual-2026-10-22/captures/zh-Hans/iPhone/05-recording-compare.png",
+      "sourceSHA256": "85c5cf95bb6afb1a9d9d76480a0f2b1c1ff9b1fc06eb9f2cd29cab916a53ee74",
+      "sha256": "974f167f453048f94274a8b51fe8ab4629cfd804bbeee235bdbbf35fa1e901da",
+      "width": 660,
+      "height": 1434,
+      "bytes": 29564
+    },
+    {
+      "file": "assets/tuner.webp",
+      "source": "AppStore/Screenshots/Editable/Multilingual-2026-10-22/captures/zh-Hans/iPhone/06-tuner.png",
+      "sourceSHA256": "c74e5eed46afbb5ce866322c759f5800a9adbe5d2b90bf23a29e375e3ef1c938",
+      "sha256": "0e3bad809499227b844d97479304400396e3cb533354506082af52bc07f5bf3d",
+      "width": 660,
+      "height": 1434,
+      "bytes": 28782
+    }
+  ]
+}

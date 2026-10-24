@@ -1,27 +1,43 @@
 # 吉他自习室官方网站
 
-营销首页、产品事实、支持和隐私政策使用静态 HTML。当前内容口径为 1.3 已上架；上架由产品负责人于 2026-10-04 确认。本次 Apple 中国区公开网页请求返回 404、Lookup 返回空结果，未独立确认公开版本或精确发布时间。功能依据 1.3 / Build 9 发布材料和实际代码，不把查询异常解释为下架。
+营销首页、产品事实、支持与隐私政策为无需 JavaScript 的静态 HTML。当前版本 **1.4 已上架**；2026-10-24 Apple 中国区、美国区公开 Lookup 均确认 1.4、免费、iOS 17.0 起。Apple 记录的本版发布时间为北京时间 2026-10-24 05:28:23。Build 10 来自对应发布关联与签名包记录，公开 Lookup 不提供 Build 号。
 
-## 文件与发布
+## 文件与维护
 
-- `index.html`：营销与下载；`about.html`：官方产品事实和能力边界。
-- `support.html`：19 条问答、更新与故障处理；`privacy.html`：数据处理、旧版差异、网站与邮件。
-- `llms.txt`：公开事实摘要，辅助引用；不是搜索或 AI 排名保证。
-- `sitemap.xml`：仅收录 4 个 canonical HTML 页面。
-- `assets/`：实际 App 截图；六张 WebP 来自 2026-10-03 的 Build 9 简体中文 iPhone 截图，宽 660px。成长数据为演示数据。
-- `og-card.html` / `.css`：1200×630 社交图源模板，noindex；修改后须用浏览器重新截图到 `assets/og-cover.png`。
-- `site-accessibility.css`：键盘焦点、问题目录、小屏换行与减少动态效果。
+- `index.html`：营销、下载、6 条产品问答、1.4 更新。
+- `about.html`：产品身份、80 课 / 72 首静态和弦分段伴奏材料、真实能力边界。
+- `support.html`：24 条使用与故障问答；`privacy.html`：数据处理、旧版差异、网站与邮件。
+- `llms.txt`：可引用的公开事实摘要，不是搜索排名信号。
+- `sitemap.xml`：仅列四个 canonical HTML 页面，lastmod 对应实际内容更新时间。
+- `assets/manifest.json`：六张实际界面的来源、尺寸与 SHA-256。采用 1.4 发布材料中的中文原图（10-21 采集、10-22 复用），宽 660px WebP，内容未重绘。
+- `assets/growth.webp` 为兼容已有 URL 保留文件名，当前展示同条件录音对比。进度和音频包含演示数据与合成样本，不是学习效果证据。
+- `og-card.html` / `.css`：1200×630 分享封面源模板，noindex；修改后用浏览器重截图 `assets/og-cover.png`。
+- `site-accessibility.css`：键盘焦点、跳到正文、问题目录、换行与减少动态效果。
 
-本仓库独立于 App 主仓库。远端为 `weizhichao1027-collab/xianlian-legal`，GitHub Pages 从 `main:/` 自动部署。更新后先执行 `python3 verify_site.py`，检查响应式页面与分享图，再提交和推送 main。推送后的 GitHub Actions 校验只报告问题，不是 Pages 发布前的阻塞门禁，因此本地校验必须先通过。等待 Pages 构建完成，并比较公网响应与本地文件 SHA-256。回滚使用 `git revert <commit>`，不要覆盖历史。
+支持和隐私同时维护于 App 主仓库 `AppStore/Legal/`，FAQ JSON-LD 必须与可见正文一致。无第三方执行脚本、外部字体或新增网站跟踪器。
 
-支持和隐私正文的维护源同时位于 App 主仓库 `AppStore/Legal/`。修改时必须同步正文与 HTML；FAQ JSON-LD 的问题和答案必须与页面可见内容一致。`verify_site.py` 会检查链接、锚点、图片属性、canonical、社交摘要、版本及问答一致性。HTML 首屏内容无需 JavaScript，未嵌入第三方追踪脚本。
+## 本地检查、发布与回滚
 
-## SEO / GEO 边界
+```sh
+python3 verify_site.py
+python3 -m unittest -v test_verify_site
+python3 -m http.server 8765 --bind 127.0.0.1
+```
 
-保留原有 Google 验证标签，但没有因此假定 Search Console 所有权验证成功。没有访问 Search Console、Bing Webmaster 或执行 sitemap 提交；后续在已验证的网站资源内提交 `https://weizhichao1027-collab.github.io/xianlian-legal/sitemap.xml`，再检查索引和抓取结果。不使用已停用的匿名 sitemap ping。
+检查四页在 375 / 768 / 1440 CSS px 下的展示、图片加载、键盘与目录跳转，以及分享封面。验证器检查 metadata、JSON-LD、可见 FAQ、当前版本、canonical、站内文件和锚点、实际图片尺寸、sitemap 与日期；18 个回归测试含缺失页面、坏 JSON、错误 metadata、隐藏 FAQ、旧版摘要、坏链接、图片与 sitemap 故障注入。
 
-搜索引擎读取的是域名根路径 `/robots.txt`，不是 `/xianlian-legal/robots.txt`。2026-10-04 根路径返回 404，未观察到 robots 抓取阻止；本仓库里的文件仅保留部署说明与 sitemap 地址。若需要控制机器人，须在现有域名根站点或未来自定义域名上配置，不能声称项目目录配置已经生效。
+本仓库独立于 App 主仓库，远端 `weizhichao1027-collab/xianlian-legal`，Pages 从 `main:/` 自动部署。检查通过后提交并推送 main，等待验证与 Pages 工作流成功，再核对公网文件 HTTP 与 SHA-256。legacy Pages 不被验证工作流阻塞，所以本地检查必须先通过。回滚用 `git revert <commit>` 再推送，不覆盖既有历史。主 App 仓库无远端，不能将其本地提交写成已推送。
 
-GEO 通过清晰定义、稳定实体 ID、可见问答、官方来源、更新时间与能力边界实现。App 支持 13 语言不等于网站已提供 13 个语言版本；只声明实际存在的简体中文页面。没有虚构评分、评论、下载量、真人教学或学习成果。结构化数据有效不保证富结果；llms.txt 不保证被模型采纳。
+## SEO / GEO
 
-参考：[Google AI 搜索说明](https://developers.google.com/search/docs/appearance/ai-features)、[robots.txt 文档](https://developers.google.com/search/docs/crawling-indexing/robots/intro)、[GitHub 隐私声明](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement)、[友盟隐私政策](https://www.umeng.com/page/policy/)。完整交接与验证证据保留在 App 主仓库 `Documentation/Project/Website-Launch-2026-10-04.md` 和 `Documentation/Verification/2026-10-04-Website-Launch/`。
+统一名称、版本、开发者、直接问答、可见来源与能力边界；稳定实体 ID、canonical、OG/Twitter、SoftwareApplication、Breadcrumb、FAQPage 与可见内容同步。仅声明实际存在的简体中文网页，不因 App 有 13 语言而生成虚假网页 hreflang；不编造评分、下载量、评论或学习效果。
+
+Google 当前说明 llms.txt 不影响搜索可见性或排名；不需要 AI 专用结构化数据。FAQPage 作为语义描述保留，Google 已停止 FAQ 富结果展示。结构化数据通过不等于收录或排名，GEO 也不保证生成式系统引用。
+
+保留 Google 验证标签，尚未登录确认 Search Console 或 Bing Webmaster 所有权，也未提交 sitemap。后续在已验证资源中提交 `https://weizhichao1027-collab.github.io/xianlian-legal/sitemap.xml`，检查四页索引、生成式 AI 控制和效果报告。不使用已停用的匿名 ping 接口。
+
+爬虫规则读取域名根 `/robots.txt`，项目目录的 `robots.txt` 只作说明，不能控制整站抓取。若需调整控制，应在域名根站点或自定义域名配置，并另行核实。
+
+来源：[Google AI 优化](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)、[Google 更新记录](https://developers.google.com/search/updates)、[内容控制](https://developers.google.com/search/docs/crawling-indexing/control-what-you-share)、[Bing 指南](https://www.bing.com/webmasters/help/bing-webmaster-guidelines-30fba23a)、[GitHub 隐私](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement)、[友盟隐私](https://www.umeng.com/page/policy/)。
+
+完整交接、部署提交与核验结果存于 App 主仓库 `Documentation/Project/Website-Launch-2026-10-24.md` 和 `Documentation/Verification/2026-10-24-Website-Launch/`。

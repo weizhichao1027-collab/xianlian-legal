@@ -13,3 +13,4 @@ jobs:
         with:
           python-version: '3.12'
       - run: python verify_site.py
+      - run: python -m unittest -v test_verify_site
