@@ -19,7 +19,10 @@ from urllib.robotparser import RobotFileParser
 ROOT = Path(__file__).resolve().parent
 BASE = 'https://weizhichao1027-collab.github.io/xianlian-legal/'
 APP_STORE = 'https://apps.apple.com/cn/app/id6788635183'
-VERSION = '1.4'
+VERSION = '1.5'
+DEVELOPER = 'Shanghai Qishan Cultural Communication Co., Ltd.'
+SUPPORT_EMAIL = 'weizhichao1027@gmail.com'
+APP_LANGUAGES = {'zh-Hans', 'en', 'es', 'fr', 'de', 'ja', 'ko', 'pt-BR', 'ru', 'ar', 'hi', 'id', 'it'}
 PAGES = ['index.html', 'about.html', 'support.html', 'privacy.html']
 VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'}
 
@@ -28,6 +31,7 @@ class Page(HTMLParser):
     def __init__(self, source):
         super().__init__(convert_charrefs=True)
         self.tags, self.text, self.titles, self.scripts, self.stack = [], [], [], [], []
+        self.visible_times = []
         self.feed(source)
         self.close()
 
@@ -42,6 +46,8 @@ class Page(HTMLParser):
             self.titles.append('')
         if tag == 'script':
             self.scripts.append((attrs, []))
+        if tag == 'time' and not hidden:
+            self.visible_times.append({'datetime': attrs.get('datetime', ''), 'text': ''})
         if tag not in VOID:
             self.stack.append((tag, hidden))
 
@@ -64,6 +70,8 @@ class Page(HTMLParser):
             self.titles[-1] += data
         elif 'body' in tags and not any(hidden for tag, hidden in self.stack):
             self.text.append(data)
+            if 'time' in tags:
+                self.visible_times[-1]['text'] += data
 
 
 def norm(value):
@@ -106,10 +114,12 @@ def image_size(path):
 def stale_claims(text):
     """Only reject present-tense claims; '旧版 1.3' and '从 1.3 起' are valid."""
     compact = norm(text)
-    old = r'1\.[0-3](?!\d)'
-    patterns = (r'(?:当前(?:公开)?版本|现行版本|公开版本)[:：]?' + old,
-                r'1\.4(?:/Build\d+)?(?:候选版本|尚未上架|待发布|尚未发布)',
-                r'(?:待发布|尚未上架|尚未发布)[:：]?1\.4')
+    old = r'1\.[0-' + str(int(VERSION.split('.')[1]) - 1) + r'](?!\d)'
+    current = re.escape(VERSION)
+    pending = r'(?:候选版本|尚未上架|待发布|尚未发布|等待审核|待审核)'
+    patterns = (r'(?:吉他自习室(?:App)?|当前(?:公开)?版本|现行版本|公开版本)[:：]?' + old,
+                current + r'(?:/Build\d+)?' + pending,
+                pending + r'[:：]?' + current)
     for sentence in re.split(r'[。；;\n]', compact):
         for pattern in patterns:
             for match in re.finditer(pattern, sentence):
@@ -171,6 +181,7 @@ def audit(root=ROOT):
         title = page.titles[0].strip() if page.titles else ''
         check(title == metas.get('og:title') == metas.get('twitter:title'), f'{name}: social titles differ')
         check(bool(metas.get('description')), f'{name}: description missing')
+        check(metas.get('author') == DEVELOPER, f'{name}: metadata developer identity')
         check(metas.get('description') == metas.get('og:description') == metas.get('twitter:description'), f'{name}: descriptions differ')
         check(VERSION in metas.get('description', ''), f'{name}: description lacks current version {VERSION}')
         check(metas.get('og:url') == canonical, f'{name}: OG URL mismatch')
@@ -229,12 +240,34 @@ def audit(root=ROOT):
         check(len(node_ids) == len(set(node_ids)), f'{name}: duplicate structured entity IDs')
         apps = [n for n in nodes if 'SoftwareApplication' in types(n)]
         check(len(apps) == 1, f'{name}: one SoftwareApplication required')
+        developers = [n for n in nodes if n.get('@id') == BASE + '#developer']
+        check(len(developers) == 1 and developers[0].get('name') == DEVELOPER,
+              f'{name}: structured developer identity')
+        if developers:
+            contact = developers[0].get('contactPoint', {})
+            check(isinstance(contact, dict) and contact.get('email') == SUPPORT_EMAIL,
+                  f'{name}: structured support email')
         faqs = 0
         for node in nodes:
             if 'SoftwareApplication' in types(node):
                 check(node.get('softwareVersion') == VERSION, f'{name}: schema version')
+                if 'description' in node:
+                    description = str(node['description'])
+                    check(VERSION in description and not stale_claims(description),
+                          f'{name}: stale structured app description')
                 check(node.get('@id') == BASE + '#app', f'{name}: app entity identity')
                 check(node.get('downloadUrl') == APP_STORE, f'{name}: app download URL')
+                check(node.get('author') == {'@id': BASE + '#developer'}, f'{name}: app developer reference')
+                if 'operatingSystem' in node or name in ('index.html', 'about.html', 'support.html'):
+                    check(node.get('operatingSystem') == 'iOS 17.0 or later; iPadOS 17.0 or later',
+                          f'{name}: minimum operating system mismatch')
+                if name in ('index.html', 'about.html'):
+                    languages = node.get('inLanguage', [])
+                    check(isinstance(languages, list) and all(isinstance(item, str) for item in languages)
+                          and len(languages) == len(APP_LANGUAGES)
+                          and set(languages) == APP_LANGUAGES, f'{name}: app languages mismatch')
+                    check(str(node.get('releaseNotes', '')).startswith(VERSION + '：'),
+                          f'{name}: stale structured release notes')
                 check(node.get('isAccessibleForFree') is True, f'{name}: app free status')
                 offer = node.get('offers', {})
                 check(isinstance(offer, dict) and str(offer.get('price')) in ('0', '0.0') and offer.get('priceCurrency') == 'CNY', f'{name}: free offer mismatch')
@@ -265,6 +298,15 @@ def audit(root=ROOT):
                         except (ValueError, TypeError):
                             check(False, f'{name}: invalid {field}')
         check(name in modified, f'{name}: page schema dateModified missing')
+        check(any(item['datetime'] == modified.get(name)
+                  and re.sub(r'\D', '', item['text']) == str(modified.get(name, '')).replace('-', '')
+                  for item in page.visible_times), f'{name}: visible update date differs from page schema')
+        check(not any(tag in ('iframe', 'object', 'embed') for tag, attrs in page.tags),
+              f'{name}: unexpected embedded external content')
+        if name == 'index.html':
+            release_url = BASE + 'about.html#release-' + VERSION.replace('.', '-')
+            check(any(tag == 'a' and urljoin(BASE, attrs.get('href', '')) == release_url
+                      for tag, attrs in page.tags), f'{name}: current release details link missing')
         results.append({'page': name, 'canonical': canonical, 'faq_count': faqs, 'bytes': len(source.encode('utf-8'))})
 
     for name, page in docs.items():
@@ -313,6 +355,9 @@ def audit(root=ROOT):
         errors.append(f'sitemap: invalid XML: {exc}')
     llms = read('llms.txt')
     check(VERSION in llms and not stale_claims(llms), 'llms: current release facts missing/stale')
+    recording_limits = re.search(r'主动演奏留档最长\s*(\d+)\s*秒[、，]\s*最多\s*(\d+)\s*条', llms)
+    check(recording_limits is not None and recording_limits.groups() == ('180', '24'),
+          'llms: recording duration/capacity differs from product contract')
     for url in re.findall(r'\]\((https?://[^\s)]+)\)', llms):
         local_target(url, 'llms.txt')
     robots = read('robots.txt')

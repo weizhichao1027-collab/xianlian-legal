@@ -1,8 +1,8 @@
 {
-  "updated": "2026-10-24",
-  "version": "1.4",
-  "releaseBuild": "10",
-  "sourceNote": "Original Chinese UI captures dated 2026-10-21, reused in 2026-10-22 release artwork. Progress and audio include demo data and synthetic samples, not learning outcomes. growth.webp preserves its old URL but now shows recording comparison.",
+  "updated": "2026-10-28",
+  "version": "1.5",
+  "releaseBuild": "11",
+  "sourceNote": "Version 1.5 reuses six ordinary iPhone captures from 2026-10-21; these were not recaptured. New Duo practice capture is dated 2026-10-26, rotated clockwise 90 degrees for upright reading and resized only. Progress and audio include demo data and synthetic samples, not learning outcomes. growth.webp preserves its historical URL.",
   "images": [
     {
       "file": "assets/today.webp",
@@ -57,6 +57,24 @@
       "width": 660,
       "height": 1434,
       "bytes": 28782
+    },
+    {
+      "file": "assets/duo-practice.webp",
+      "source": "AppStore/Screenshots/Editable/Duo-13Languages-2026-10-26/captures/zh-Hans/iPhone-Duo/04-song-practice.png",
+      "sourceSHA256": "0ffb4c1831d77eb580427cf079eb1ba8cb12b25d565cfa912e4fee6ab616342a",
+      "sha256": "fe99cd39686a7257b0d7dc455c4fc77e2b108c4edd09f669a42595d9bc16a5bb",
+      "width": 1200,
+      "height": 844,
+      "bytes": 32832,
+      "transform": "rotate clockwise 90 degrees; resize 2852×2006 to 1200×844; WebP quality 86; no UI retouching"
     }
-  ]
+  ],
+  "socialCover": {
+    "file": "assets/og-cover.png",
+    "source": "og-card.html + og-card.css + assets/today.webp",
+    "sha256": "26890288c6cbdb0cf24bb9f8a4eadbfb5d32d0bbf47204ca7689502be870f549",
+    "width": 1200,
+    "height": 630,
+    "note": "Rendered with installed Chrome from the 1.5 sharing-card template on 2026-10-28."
+  }
 }
